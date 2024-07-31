@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Recommendations</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C02727;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto; /* Push the footer to the bottom */
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Anime Hub 🌟</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/recommendations">Recommendations</a></li>
+                <li><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&autoplay=1" target="_blank">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="top-50">
+            <h2>Welcome to the Anime Hub!</h2>
+            <p>Embark on an anime adventure with the top 50 Anime, where every episode is a journey and every character is a story waiting to unfold.</p>
+        </section>
+    </main>
+
+    <div class="container">
+        {% for i in range(Anime|length) %}
+            <div class="card">
+                <img class="card-img-top" src="{{ image[i] }}" alt="{{ Anime[i] }}">
+                <div class="card-body">
+                    <h2 class="text-white" style="font-size:20px">{{ Anime[i] }}</h2>
+                    <h4 class="text-white">{{ Studio[i] }}</h4>
+                    <h4 class="text-white">Votes - {{ votes[i] }}</h4>
+                    <h4 class="text-white">Rating - {{ rating[i]|round(2) }}</h4>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Anime Hub</p>
+    </footer>
+</body>
+</html>
